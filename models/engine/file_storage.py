@@ -1,9 +1,5 @@
 #!/usr/bin/python3
-
-"""
-Contains the FileStorage class
-"""
-
+"""This module is for the storage engine."""
 import json
 from models.base_model import BaseModel
 from models.user import User
@@ -16,30 +12,23 @@ from models.review import Review
 
 class FileStorage:
     """
-    a class to serialize and deserialize
-    - instance to JSON file
-    - to JSON file to instance
+    class FileStorage that serializes instances to a JSON file and
+    deserializes JSON file to instances
     """
     __file_path = "file.json"
     __objects = {}
 
     def all(self):
-        """
-        returns the dictionary
-        """
+        """returns the dictionary __objects"""
         return self.__objects
 
     def new(self, obj):
-        """
-        sets in __objects the obj with key <obj class name>.id
-        """
+        """sets in __objects the obj with key <obj class name>.id"""
         k = "{}.{}".format(obj.__class__.__name__, obj.id)
         self.__objects[k] = obj
 
     def save(self):
-        """
-        serializes __objects to the JSON file
-        """
+        """serializes __objects to the JSON file"""
         dict_dict = {}
         with open(self.__file_path, 'w') as f:
             for obj in self.all().values():
@@ -49,7 +38,8 @@ class FileStorage:
 
     def reload(self):
         """
-        deserializes the JSON file to __objects
+        deserializes the JSON file to __objects but only if the JSON file
+        exists
         """
         try:
             with open(self.__file_path) as f:
