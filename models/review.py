@@ -5,12 +5,7 @@ from models.base_model import BaseModel
 
 class Review(BaseModel):
     """
-    Review class inherits from BaseModel
-    Attributes:
-        NAME:       TYPE:   DESC:
-        place_id    (str)   id of place
-        user_id     (str)   id of user
-        text        (str)   content of review
+    Review class inheriting from basemodel
     """
     place_id = ""
     user_id = ""

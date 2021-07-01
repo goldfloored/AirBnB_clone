@@ -6,8 +6,5 @@ from models.base_model import BaseModel
 class Amenity(BaseModel):
     """
     Amenity class inherits from BaseModel
-    Attributes:
-        NAME:   TYPE:   DESC:
-        name    (str)   name of amenity
     """
     name = ""

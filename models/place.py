@@ -6,19 +6,6 @@ from models.base_model import BaseModel
 class Place(BaseModel):
     """
     Place class inherits from BaseModel
-    Attributes:
-        NAME:           TYPE:   DESC:
-        city_id         (str)   id of city
-        user_id         (str)   id of user
-        name            (str)   name of place
-        description     (str)   description of place
-        number_rooms    (int)   number of rooms of place
-        number_bathrooms(int)   number of bathrooms of place
-        max_guest       (int)   maximum number of guests
-        price_by_night  (int)   price by night of place
-        latitude        (float) the latitude of place
-        longitude       (float) the longitude of place
-        amenity_ids     (list)  list of strings detailing amenities
     """
     city_id = ""
     user_id = ""
