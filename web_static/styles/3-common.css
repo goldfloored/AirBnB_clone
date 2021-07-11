@@ -1,0 +1,13 @@
+body {
+    display:flex;
+    flex-direction:column;
+    margin:0;
+    padding:0;
+    color:#484848;
+    background-color:#FFFFFF;
+    font-size:14px;
+    font-family:Circular,"Helvetica Neue",Helvetica,Arial,sans-serif;
+}
+main {
+    margin-bottom:60px;
+}

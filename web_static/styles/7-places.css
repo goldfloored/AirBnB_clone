@@ -1,0 +1,21 @@
+.places h1 {
+    text-align:left;
+    font-size:30px;
+    margin-left:20px;
+}
+.fakeplaces {
+    display:flex;
+    justify-content:center;
+    flex-wrap:wrap;
+}
+.fakeplaces article {
+    width:390px;
+    margin:20px;
+    padding:20px;
+    border:1px solid #FF545F;
+    border-radius:4px;
+}
+.fakeplaces article h2 {
+    font-size:30px;
+    text-align:center;
+}
