@@ -1,0 +1,32 @@
+
+Retrieves a specified State object.
+---
+tags:
+    - states
+parameters:
+  - name: state_id
+    in: path
+    type: string
+    required: true
+    default: all
+definitions:
+  State:
+    type: object
+    properties:
+      id:
+        type: string
+      name:
+        type: string
+      created_at:
+        type: date
+      updated_at:
+        type: date
+      __class__:
+        type: string
+responses:
+  200:
+    description: A state object
+    schema:
+      $ref: '#/definitions/State'
+  404:
+    description: If an object was not found

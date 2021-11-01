@@ -1,0 +1,52 @@
+
+Creates a new Review object.
+---
+tags:
+    - places_reviews
+parameters:
+  - name: place_id
+    in: path
+    type: json
+    required: true
+    default: all
+    schema:
+      $ref: '#/definitions/review_body'
+  - name: data
+    in: body
+    type: json
+    required: true
+    default: all
+    schema:
+      $ref: '#/definitions/review_body'
+definitions:
+  Review:
+    type: object
+    properties:
+      place_id:
+        type: string
+      user_id:
+        type: string
+      text:
+        type: string
+      created_at:
+        type: date
+      updated_at:
+        type: date
+      __class__:
+        type: string
+  review_body:
+    type: json
+    properties:
+      text:
+        type: string
+        required: false
+      user_id:
+        type: string
+        required: false
+responses:
+  200:
+    description: A review object
+    schema:
+      $ref: '#/definitions/Review'
+  400:
+    description: If user_id attribute is missing

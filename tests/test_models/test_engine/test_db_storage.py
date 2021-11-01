@@ -18,7 +18,6 @@ import json
 import os
 import pep8
 import unittest
-from models import storage
 DBStorage = db_storage.DBStorage
 classes = {"Amenity": Amenity, "City": City, "Place": Place,
            "Review": Review, "State": State, "User": User}
@@ -88,23 +87,49 @@ class TestFileStorage(unittest.TestCase):
     def test_save(self):
         """Test that save properly saves objects to file.json"""
 
-    def test_get_db(self):
-        """ Tests method for obtaining an instance db storage"""
-        dic = {"name": "Cundinamarca"}
-        instance = State(**dic)
-        storage.new(instance)
-        storage.save()
-        get_instance = storage.get(State, instance.id)
-        self.assertEqual(get_instance, instance)
 
-    def test_count(self):
-        """ Tests count method db storage """
-        dic = {"name": "Vecindad"}
-        state = State(**dic)
-        storage.new(state)
-        dic = {"name": "Mexico", "state_id": state.id}
-        city = City(**dic)
-        storage.new(city)
-        storage.save()
-        c = storage.count()
-        self.assertEqual(len(storage.all()), c)
+class TestDBStorageCount(unittest.TestCase):
+    """Test the DBStorage count """
+    __classes = [
+        'User', 'State', 'City', 'Amenity', 'Place', 'Review'
+    ]
+
+    @unittest.skipIf(models.storage_t != 'db', "not testing db storage")
+    def testGet(self):
+        """
+            Test that get return the waiting object from database
+        """
+        state = State()
+        state.name = "Test state"
+        models.storage.new(state)
+        get_state = models.storage.get(State, state.id)
+        self.assertEqual(state.id, get_state.id)
+        models.storage.delete(state)
+        self.assertIsNone(models.storage.get(State, 99))
+        self.assertIsNone(models.storage.get(State, None))
+
+    @unittest.skipIf(models.storage_t != 'db', "not testing db storage")
+    def testCount(self):
+        """
+            Test that count return object table count
+        """
+        count = models.storage.count()
+        obj = State()
+        obj.name = "Test state"
+        models.storage.new(obj)
+        id = obj.id
+        self.assertEqual(models.storage.count(), count + 1)
+        models.storage.delete(obj)
+        self.__testCountWithoutSpecifiedClass()
+
+    def __testCountForClass(self, prmClassName):
+        count = models.storage.count()
+        obj = eval(prmClassName)()
+        models.storage.new(obj)
+        id = obj.id
+        self.assertEqual(models.storage.count(), count + 1)
+        models.storage.delete(obj)
+
+    def __testCountWithoutSpecifiedClass(self):
+        count = models.storage.count()
+        self.assertEqual(count, len(models.storage.all()))

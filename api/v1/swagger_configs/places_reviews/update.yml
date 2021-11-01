@@ -1,0 +1,50 @@
+
+Update a specified User object.
+---
+tags:
+    - places_reviews
+parameters:
+  - name: user_id
+    in: path
+    type: string
+    required: true
+    default: all
+  - name: data
+    in: body
+    type: json
+    required: true
+    default: all
+    schema:
+      $ref: '#/definitions/review_body'
+definitions:
+  Review:
+    type: object
+    properties:
+      place_id:
+        type: string
+      user_id:
+        type: string
+      text:
+        type: string
+      created_at:
+        type: date
+      updated_at:
+        type: date
+      __class__:
+        type: string
+  userreview_body:
+    type: json
+    properties:
+      text:
+        type: string
+        required: false
+      user_id:
+        type: string
+        required: false
+responses:
+  200:
+    description: A user object
+    schema:
+      $ref: '#/definitions/Review'
+  400:
+    description: If name attribute is missing

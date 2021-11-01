@@ -1,0 +1,26 @@
+
+Creates a new State object.
+---
+tags:
+    - amenities
+definitions:
+  Amenity:
+    type: object
+    properties:
+      id:
+        type: string
+      name:
+        type: string
+      created_at:
+        type: date
+      updated_at:
+        type: date
+      __class__:
+        type: string
+responses:
+  200:
+    description: A state object
+    schema:
+      $ref: '#/definitions/Amenity'
+  400:
+    description: If name attribute is missing

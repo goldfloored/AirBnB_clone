@@ -1,0 +1,42 @@
+
+Deletes a specified State object.
+---
+tags:
+    - states
+parameters:
+  - name: state_id
+    in: path
+    type: string
+    required: true
+    default: all
+  - name: data
+    in: body
+    type: json
+    required: true
+    default: all
+    schema:
+      $ref: '#/definitions/state_body'
+definitions:
+  State:
+    type: object
+    properties:
+      id:
+        type: string
+      name:
+        type: string
+      created_at:
+        type: date
+      updated_at:
+        type: date
+      __class__:
+        type: string
+  state_body:
+    type: json
+    properties:
+      name:
+        type: string
+responses:
+  200:
+    description: A empty list
+  404:
+    description: If an object was not found

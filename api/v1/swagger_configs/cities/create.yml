@@ -1,0 +1,28 @@
+
+Creates a new City object.
+---
+tags:
+    - cities
+definitions:
+  City:
+    type: object
+    properties:
+      id:
+        type: string
+      name:
+        type: string
+      state_id:
+        type: string
+      created_at:
+        type: date
+      updated_at:
+        type: date
+      __class__:
+        type: string
+responses:
+  200:
+    description: A city object
+    schema:
+      $ref: '#/definitions/City'
+  400:
+    description: If name attribute is missing

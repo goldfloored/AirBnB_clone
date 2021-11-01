@@ -1,0 +1,32 @@
+
+Retrieves the list of all State objects.
+---
+tags:
+    - users
+definitions:
+  Users:
+    type: array
+    items:
+        $ref: '#/definitions/User'
+  User:
+    type: object
+    properties:
+      id:
+        type: string
+      last_name:
+        type: string
+      first_name:
+        type: string
+      email:
+        type: string
+      created_at:
+        type: date
+      updated_at:
+        type: date
+      __class__:
+        type: string
+responses:
+  200:
+    description: A list of users
+    schema:
+      $ref: '#/definitions/Users'

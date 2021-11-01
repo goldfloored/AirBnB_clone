@@ -1,0 +1,53 @@
+
+Creates a new User object.
+---
+tags:
+    - users
+parameters:
+  - name: data
+    in: body
+    type: json
+    required: true
+    default: all
+    schema:
+      $ref: '#/definitions/user_body'
+definitions:
+  User:
+    type: object
+    properties:
+      id:
+        type: string
+      last_name:
+        type: string
+      first_name:
+        type: string
+      email:
+        type: string
+      created_at:
+        type: date
+      updated_at:
+        type: date
+      __class__:
+        type: string
+  user_body:
+    type: json
+    properties:
+      last_name:
+        type: string
+        required: false
+      first_name:
+        type: string
+        required: false
+      email:
+        type: string
+        required: true
+      password:
+        type: string
+        required: true
+responses:
+  200:
+    description: A user object
+    schema:
+      $ref: '#/definitions/User'
+  400:
+    description: If email attribute is missing

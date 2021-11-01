@@ -114,28 +114,43 @@ class TestFileStorage(unittest.TestCase):
             js = f.read()
         self.assertEqual(json.loads(string), json.loads(js))
 
-    @unittest.skipIf(models.storage_t == 'db', "not testing file storage")
-    def test_get(self):
-        """ Tests method for obtaining an instance file storage"""
-        storage = FileStorage()
-        dic = {"name": "Vecindad"}
-        instance = State(**dic)
-        storage.new(instance)
-        storage.save()
-        storage = FileStorage()
-        get_instance = storage.get(State, instance.id)
-        self.assertEqual(get_instance, instance)
+
+class TestFileStorageCount(unittest.TestCase):
+    """Test the FileStorage count """
+    __classes = [
+        'BaseModel', 'User', 'State', 'City', 'Amenity', 'Place', 'Review'
+    ]
 
     @unittest.skipIf(models.storage_t == 'db', "not testing file storage")
-    def test_count(self):
-        """ Tests count method file storage """
-        storage = FileStorage()
-        dic = {"name": "Vecindad"}
-        state = State(**dic)
-        storage.new(state)
-        dic = {"name": "Mexico"}
-        city = City(**dic)
-        storage.new(city)
-        storage.save()
-        c = storage.count()
-        self.assertEqual(len(storage.all()), c)
+    def testGet(self):
+        """
+            Test that get return the waiting object from object list
+        """
+        state = State()
+        models.storage.new(state)
+        get_state = models.storage.get(State, state.id)
+        self.assertEqual(state, get_state)
+        models.storage.delete(state)
+        self.assertIsNone(models.storage.get(State, 99))
+        self.assertIsNone(models.storage.get(State, None))
+
+    @unittest.skipIf(models.storage_t == 'db', "not testing file storage")
+    def testCount(self):
+        """
+            Test that count return object list count
+        """
+        for className in self.__classes:
+            self.__testCountForClass(className)
+        self.__testCountWithoutSpecifiedClass()
+
+    def __testCountForClass(self, prmClassName):
+        count = models.storage.count()
+        obj = eval(prmClassName)()
+        models.storage.new(obj)
+        id = obj.id
+        self.assertEqual(models.storage.count(), count + 1)
+        models.storage.delete(obj)
+
+    def __testCountWithoutSpecifiedClass(self):
+        count = models.storage.count()
+        self.assertEqual(count, len(models.storage.all()))

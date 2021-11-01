@@ -1,0 +1,32 @@
+
+Deletes a specified Review object.
+---
+tags:
+    - places_reviews
+parameters:
+  - name: review_id
+    in: path
+    type: string
+    required: true
+    default: all
+definitions:
+  Review:
+    type: object
+    properties:
+      place_id:
+        type: string
+      user_id:
+        type: string
+      text:
+        type: string
+      created_at:
+        type: date
+      updated_at:
+        type: date
+      __class__:
+        type: string
+responses:
+  200:
+    description: A empty list
+  404:
+    description: If an object was not found

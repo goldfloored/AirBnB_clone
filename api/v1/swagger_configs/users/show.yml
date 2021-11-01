@@ -1,0 +1,36 @@
+
+Retrieves a specified State object.
+---
+tags:
+    - users
+parameters:
+  - name: user_id
+    in: path
+    type: string
+    required: true
+    default: all
+definitions:
+  User:
+    type: object
+    properties:
+      id:
+        type: string
+      last_name:
+        type: string
+      first_name:
+        type: string
+      email:
+        type: string
+      created_at:
+        type: date
+      updated_at:
+        type: date
+      __class__:
+        type: string
+responses:
+  200:
+    description: A user object
+    schema:
+      $ref: '#/definitions/User'
+  404:
+    description: If an object was not found

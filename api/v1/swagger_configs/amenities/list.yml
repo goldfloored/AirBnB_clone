@@ -1,0 +1,28 @@
+
+Retrieves the list of all State objects.
+---
+tags:
+    - amenities
+definitions:
+  Amenities:
+    type: array
+    items:
+        $ref: '#/definitions/Amenity'
+  Amenity:
+    type: object
+    properties:
+      id:
+        type: string
+      name:
+        type: string
+      created_at:
+        type: date
+      updated_at:
+        type: date
+      __class__:
+        type: string
+responses:
+  200:
+    description: A list of states
+    schema:
+      $ref: '#/definitions/Amenities'

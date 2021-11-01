@@ -1,0 +1,44 @@
+
+Retrieves the list of all Place objects.
+---
+tags:
+    - places
+definitions:
+  Places:
+    type: array
+    items:
+        $ref: '#/definitions/Place'
+  Place:
+    type: object
+    properties:
+      id:
+        type: string
+      name:
+        type: string
+      number_rooms:
+        type: number
+      number_bathrooms:
+        type: number
+      max_guest:
+        type: number
+      price_by_night:
+        type: number
+      reviews:
+        type: array
+        items:
+            $ref: '#/definitions/Review'
+      amenities:
+        type: array
+        items:
+            $ref: '#/definitions/Amenity'
+      created_at:
+        type: date
+      updated_at:
+        type: date
+      __class__:
+        type: string
+responses:
+  200:
+    description: A list of places
+    schema:
+      $ref: '#/definitions/Places'

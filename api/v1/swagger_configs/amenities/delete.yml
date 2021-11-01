@@ -1,0 +1,30 @@
+
+Deletes a specified State object.
+---
+tags:
+    - amenities
+parameters:
+  - name: state_id
+    in: path
+    type: string
+    required: true
+    default: all
+definitions:
+  Amenity:
+    type: object
+    properties:
+      id:
+        type: string
+      name:
+        type: string
+      created_at:
+        type: date
+      updated_at:
+        type: date
+      __class__:
+        type: string
+responses:
+  200:
+    description: A empty list
+  404:
+    description: If an object was not found
