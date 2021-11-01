@@ -1,61 +1,52 @@
 #!/usr/bin/python3
 """
-this module contains deploy function which creates and distributes an archive
-to my web servers
+Fabric script based on the file 2-do_deploy_web_static.py that creates and
+distributes an archive to the web servers
 """
 
-import os
-import re
+from fabric.api import env, local, put, run
 from datetime import datetime
-from fabric.api import *
-env.hosts = ['35.227.63.107', '35.243.218.35']
+from os.path import exists, isdir
+env.hosts = ['142.44.167.228', '144.217.246.195']
 
 
 def do_pack():
-    """
-    compresses a folder to a .tgz archive
-    """
-    date_string = datetime.now().strftime('%Y%m%d%H%M%S')
-    local('mkdir -p versions/')
+    """generates a tgz archive"""
     try:
-        local("tar -cvzf versions/web_static_{}.tgz web_static".format(
-                    date_string))
-        return "versions/web_static_{}.tgz".format(date_string)
-    except Exception:
+        date = datetime.now().strftime("%Y%m%d%H%M%S")
+        if isdir("versions") is False:
+            local("mkdir versions")
+        file_name = "versions/web_static_{}.tgz".format(date)
+        local("tar -cvzf {} web_static".format(file_name))
+        return file_name
+    except:
         return None
 
 
 def do_deploy(archive_path):
-    """deploys the archive to my web servers"""
-    if os.path.exists(archive_path) is False:
+    """distributes an archive to the web servers"""
+    if exists(archive_path) is False:
         return False
-    ar_path_split = re.split('[\. | _ | /]', archive_path)
-    time_str = ar_path_split[-2]
-
     try:
-        put(archive_path, "/tmp/")
-        run("mkdir -p /data/web_static/releases/web_static_{}/".format(
-                    time_str))
-        run("tar -xzf /tmp/web_static_{}.tgz -C \
-                /data/web_static/releases/web_static_{}/\
-                ".format(time_str, time_str))
-        run("rm /tmp/web_static_{}.tgz".format(time_str))
-        run("mv /data/web_static/releases/web_static_{}/web_static/* \
-                /data/web_static/releases/web_static_{}/\
-                ".format(time_str, time_str))
-        run("rm -rf /data/web_static/releases/web_static_{}/web_static\
-                ".format(time_str))
-        run("rm -rf /data/web_static/current")
-        run("ln -s /data/web_static/releases/web_static_{}/ \
-                /data/web_static/current".format(time_str))
+        file_n = archive_path.split("/")[-1]
+        no_ext = file_n.split(".")[0]
+        path = "/data/web_static/releases/"
+        put(archive_path, '/tmp/')
+        run('mkdir -p {}{}/'.format(path, no_ext))
+        run('tar -xzf /tmp/{} -C {}{}/'.format(file_n, path, no_ext))
+        run('rm /tmp/{}'.format(file_n))
+        run('mv {0}{1}/web_static/* {0}{1}/'.format(path, no_ext))
+        run('rm -rf {}{}/web_static'.format(path, no_ext))
+        run('rm -rf /data/web_static/current')
+        run('ln -s {}{}/ /data/web_static/current'.format(path, no_ext))
         return True
-    except Exception:
+    except:
         return False
 
 
 def deploy():
-    """creates an distributes an archive to my web servers"""
-    ar_path = do_pack()
-    if ar_path is None:
+    """creates and distributes an archive to the web servers"""
+    archive_path = do_pack()
+    if archive_path is None:
         return False
-    return do_deploy(ar_path)
+    return do_deploy(archive_path)

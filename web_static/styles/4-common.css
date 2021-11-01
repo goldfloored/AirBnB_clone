@@ -1,20 +1,18 @@
-body {
-    display:flex;
-    flex-direction:column;
-    margin:0;
-    padding:0;
-    color:#484848;
-    background-color:#FFFFFF;
-    font-size:14px;
-    font-family:Circular,"Helvetica Neue",Helvetica,Arial,sans-serif;
+html, body {
+    height: 100%;
 }
-main {
-    margin-bottom:60px;
+body {
+    margin: 0px;
+    padding: 0px; 
+    color: #484848;
+    font-size: 14px;
+    font-family: Circular, "Helvetica Neue",Helvetica,Arial,sans-serif;
+    display: flex;
+    flex-direction: column;
 }
 .container {
-    max-width:1000px;
-    margin-top:30px;
-    margin-bottom:30px;
-    margin-left:auto;
-    margin-right:auto;
+    max-width: 1000px;
+    margin: 30px auto;
+    width: 100%;
+    flex: 1 0 auto;
 }

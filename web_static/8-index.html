@@ -1,92 +1,160 @@
 <!DOCTYPE html>
 <html lang="en">
     <head>
-        <title>EggBnB</title>
-	<link rel="stylesheet" href="styles/4-common.css">
-	<link rel="stylesheet" href="styles/3-header.css">
-	<link rel="stylesheet" href="styles/3-footer.css">
-	<link rel="stylesheet" href="styles/6-filters.css">
-	<link rel="stylesheet" href="styles/8-places.css">
-	<link rel="icon" href="images/icon.png">
+        <meta charset="utf-8">
+        <title>AirBnB clone</title>
+        <link rel="stylesheet" type="text/css" href="styles/4-common.css" />
+        <link rel="stylesheet" type="text/css" href="styles/3-header.css" />
+        <link rel="stylesheet" type="text/css" href="styles/3-footer.css" />
+        <link rel="stylesheet" type="text/css" href="styles/6-filters.css" />
+        <link rel="stylesheet" type="text/css" href="styles/8-places.css" />
+        <link rel='shortcut icon' href="../images/icon.png" />
     </head>
     <body>
-        <header></header>
-	<main>
-	    <div class="container">
-	        <section class="filters">
-		    <div class="locations">
-                        <h3>States</h3>
-		        <h4>California, Arizona...</h4>
-		        <ul class="popover">
-		            <li>
-			        <h2>California</h2>
+        <header> </header>
+        <div class="container">
+            <section class="filters">
+                <button>
+                    Search
+                </button>
+                <div class="locations">
+                    <h3>
+                        States
+                    </h3>
+                    <h4>
+                        California, Arizona...
+                    </h4>
+                    <ul class="popover">
+                            <li>
+                                <h2>Arizona:</h2>
+                            </li>
+                            <li>
                                 <ul>
-			            <li>San Francisco</li>
-				    <li>Sacramento</li>
-			        </ul>
-			    </li>
-			    <li>
-			        <h2>Arizona</h2>
+                                    <li>Page</li>
+                                    <li>Page2</li>
+                                </ul>
+                            </li>
+                            <li>
+                                <h2>California:</h2>
+                            </li>
+                            <li>
                                 <ul>
-			            <li>cactus</li>
-			            <li>desert</li>
-			        </ul>
-			    </li>
-		        </ul>
-		    </div>
-		    <div class="amenities">
-                        <h3>Amenities</h3>
-		        <h4>Internet, Kitchen...</h4>
-		        <ul class="popover">
-                            <li>Pool</li>
-			    <li>Recreation Room</li>
-			    <li>Internet</li>
-			    <li>Kitchen</li>
-			    <li>Eggs</li>
-		        </ul>
-		    </div>
-		    <button>Search</button>
-	        </section>
-	        <section class="places">
-	            <h1>Places</h1>
-		    <div class="fakeplaces">
-		        <article>
-		            <h2 class="place_name">Egg Pod</h2>
-		            <div class="price_by_night">$500</div>
-			    <div class="information">
-			        <div class="max_guest"><p>2 Guests</p></div>
-			        <div class="number_rooms"><p>1 Bedroom</p></div>
-			        <div class="number_bathrooms"><p>1 Bathroom</p></div>
-			    </div>
-			    <div class="user"><strong>Owner: </strong>Marsh</div>
-			    <div class="description">This is a lovely egg-shaped pod located in a quiet town of egg-pod dwellers. Though small, it is a fully functional home with everything you would need for your stay. The round shape of this facility allows it to rock on its base on a windy day, which can add excitement to an otherwise dull vacation.</div>
-		        </article>
-		        <article>
-		            <h2 class="place_name">Geodesic Egg</h2>
-		            <div class="price_by_night">$999</div>
-			    <div class="information">
-			        <div class="max_guest"><p>5 Guests</p></div>
-			        <div class="number_rooms"><p>4 Bedrooms</p></div>
-			        <div class="number_bathrooms"><p>5 Bathrooms</p></div>
-			    </div>
-			    <div class="user"><strong>Owner: </strong>Mintleaf</div>
-			    <div class="description">If you are looking for a majestic and luxurious place to stay, this is it! Featuring high ceilings and a round roof, this structure was designed for rainy and snowy weather. All of the furniture is custom made for all bodies so guests are guaranteed a comfortable stay.</div>
-		        </article>
-		        <article>
-		            <h2 class="place_name">Egg Capsule</h2>
-		            <div class="price_by_night">$100</div>
-			    <div class="information">
-			        <div class="max_guest"><p>1 Guest</p></div>
-			        <div class="number_rooms"><p>1 Bedroom</span></div>
-			        <div class="number_bathrooms"><p>0 Bathrooms</p></div>
-			    </div>
-			    <div class="user"><strong>Owner: </strong>Athena</div>
-			    <div class="description">A simple egg-shaped capsule with just enough room for one body. Situated in the middle of nowhere, this is the perfect place for your stay if you want to spend the entire time thinking about your eggxistence and wallowing in despair. Features a soundproofed interior and a large viewing port for screaming about how hungry you feel. Very far from civilization and signal towers, ideal for individuals who enjoy privacy. Must schedule private jet for drop-off at this location.</div>
-		        </article>
-		    </div>
-	        </section>
-	    </div>
-	</main>
-        <footer><p>Holberton School</p></footer>
+                                    <li>San Francisco</li>
+                                    <li>Los Altos</li>
+                                </ul>
+                            </li>
+                    </ul>
+                </div>
+                <div class="amenities">
+                    <h3>
+                        Amenities
+                    </h3>
+                    <h4>
+                        Internet, Kitchen...
+                    </h4>
+                    <ul class="popover">
+                            <li>Internet</li>
+                            <li>TV</li>
+                            <li>Kitchen</li>
+                            <li>Iron</li>
+                    </ul>
+                </div>
+            </section>
+            <section class="places">
+                <h1>Places</h1>
+                <article>
+                    <h2>My Home</h2>
+                    <div class="price_by_night">
+                        $80
+                    </div>
+                    <div class="information">
+                        <div class="max_guest">
+                            2 Guests
+                        </div>
+                        <div class="number_rooms">
+                            1 Bedroom
+                        </div>
+                        <div class="number_bathrooms">
+                            1 Bathroom
+                        </div>
+                    </div>
+                    <div class="user">
+                        <b>Owner:</b> Johnny
+                    </div>
+                    <div class="description">
+                        <p> This is a lovely 1 bedroom and 1 bathroom apartment that
+                            can accommodate 2 people. It locates at the center of 
+                            Shanghai and next to subway line 1,1 stop to People 
+                            Square, 2 stops to Bund,  3 stops to Jingan Temple.
+                        </p>
+                    </div>
+                </article>
+                <article>
+                    <h2>Tiny House</h2>
+                    <div class="price_by_night">
+                        $65
+                    </div>
+                    <div class="information">
+                        <div class="max_guest">
+                            4 Guests
+                        </div>
+                        <div class="number_rooms">
+                            2 Bedroom
+                        </div>
+                        <div class="number_bathrooms">
+                            1 Bathroom
+                        </div>
+                    </div>
+                    <div class="user">
+                        <b>Owner:</b> Adrienne
+                    </div>
+                    <div class="description">
+                        <p> Our place is a private, affordable stand-alone guest 
+                            house centrally located just minutes to French
+                            Quarters, downtown, the Fair Grounds(Jazz Fest) and 
+                            City Park. The guest house is a quaint, 400 square ft. 
+                            with a full bath, mini kitchen, & living room. The 
+                            extra high ceilings make the home feel more spacious. 
+                            The sofa converts to a bed also. We have a hand made counter
+                            area that adds character to the room and a great 
+                            porch/deck to relax on and have a glass of Merlot.
+                        </p>
+                    </div>
+                </article>
+                <article>
+                    <h2>A suite</h2>
+                    <div class="price_by_night">
+                        $190
+                    </div>
+                    <div class="information">
+                        <div class="max_guest">
+                            4 Guests
+                        </div>
+                        <div class="number_rooms">
+                            4 Bedroom
+                        </div>
+                        <div class="number_bathrooms">
+                            3 Bathroom
+                        </div>
+                    </div>
+                    <div class="user">
+                        <b>Owner:</b> Lue
+                    </div>
+                    <div class="description">
+                        <p> This is a premium quality room located in the 
+                            most important area of New York. It is close to downtown
+                            commerces and has a beatiful sight of central park.
+                            You will have all the amenities you desire and will 
+                            definitely enjoy a great time. 
+                            By yourself, with your lover, or your family, you will
+                            feel luxury from top to bottom.
+                        </p>
+                    </div>
+                </article>
+            </section>
+        </div>
+        <footer>
+            <p>Holberton School</p>
+        </footer>
     </body>
 </html>

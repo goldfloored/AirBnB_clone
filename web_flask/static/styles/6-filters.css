@@ -50,27 +50,53 @@ button:hover {
     height: 100%;
     width: 25%;
 }
+
 .popover {
     visibility: hidden;
     width: 100%;
     border: 1px solid #DDDDDD;
     border-radius: 4px;
     background: #FAFAFA;
-    padding-bottom: 25px;
+    padding-bottom: 15px;
+    height: 300px;
+    overflow-y: scroll;
+    scrollbar-width: none;
     max-height: 300px;
-    overflow: scroll;
 }
+
+.popover::-webkit-scrollbar{
+    width: 0px;
+}
+
 .amenities .popover {
-    padding: 20px 0;
+    padding: 10px 0;
     margin-left: -5px;
-    margin-top: 1%;
+    margin-top: 0%;
 }
+
+.amenities .popover ul{
+    margin: 0px;
+}
+
 .locations .popover {
-    margin-top: 1%;
+    margin-top: 0%;
 }
 .popover ul {
     list-style-type: none;
+    padding-bottom: 10px;
+    padding-left: 10px;
 }
+.popover ul li{
+    padding: 4px;
+    padding-left: 10px;
+}
+
+.popover ul h2{
+    margin-top: 1.5%;
+    margin-bottom: 5%;
+    margin-left: 0px;
+}
+
 .amenities:hover .popover,
 .locations:hover .popover {
     visibility: visible;

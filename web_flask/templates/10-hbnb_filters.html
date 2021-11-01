@@ -5,7 +5,7 @@
     <link rel="stylesheet" type="text/css" href="../static/styles/3-header.css">
     <link rel="stylesheet" type="text/css" href="../static/styles/3-footer.css">
     <link rel="stylesheet" type="text/css" href="../static/styles/6-filters.css">
-    <link rel="icon" href="../static/images/icon.png">
+    <link rel="icon" href="images/icon.png" />
     <title>HBnB</title>
   </head>
   <body>
@@ -19,16 +19,16 @@
 	  <h4>&nbsp;</h4>
 	  <div class="popover">
 	    <ul>
-            {% for state in l_states|sort(attribute='name') %}
+	      {% for state in states %}
 	      <li>
-		<h2>{{ state.name }}:</h2>
+		<h2>{{ state[0].name }}:</h2>
 		<ul>
-                {% for city in state.cities|sort(attribute='name') %}
+		  {% for city in state[1] %}
 		  <li>{{ city.name }}</li>
-                {% endfor %}
+		  {% endfor %}
 		</ul>
 	      </li>
-	    {% endfor %}
+	      {% endfor %}
 	    </ul>
 	  </div>
 	</div>
@@ -37,9 +37,9 @@
 	  <h4>&nbsp;</h4>
 	  <div class="popover">
 	    <ul>
-            {% for amenity in amenities|sort(attribute='name') %}
+	      {% for amenity in amenities %}
 	      <li>{{ amenity.name }}</li>
-	    {% endfor %}
+	      {% endfor %}
 	    </ul>
 	  </div>
 	</div>
